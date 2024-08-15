@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -54,10 +55,10 @@ public class LibroController {
 		}
 		
 		modelMap.addAttribute("autores", autorDAO.finALL());
-		modelMap.addAttribute("categoria", categoriaDAO.finALL());
+		modelMap.addAttribute("categorias", categoriaDAO.finALL());
 		
 		
-		if (opcion == 1 )return "add-libros";
+		if (opcion == 1 )return "Libros-add";
 		else return "del-libros";
 			
 	}
@@ -70,7 +71,7 @@ public class LibroController {
 			, @RequestParam("numPaginas")@Nullable Integer numPaginas
 			, @RequestParam("edicion")@Nullable String edicion
 			, @RequestParam("idioma")@Nullable String idioma
-			, @RequestParam("fechaPublicacion")@Nullable Date fechaPublicacion
+			, @RequestParam("fechaPublicacion")@Nullable @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaPublicacion
 			, @RequestParam("descripcion")@Nullable String descripcion
 			, @RequestParam("tipoPasta")@Nullable String tipoPasta
 			, @RequestParam("ISBN")@Nullable String ISBN
@@ -78,8 +79,8 @@ public class LibroController {
 			, @RequestParam("portada")@Nullable String portada
 			, @RequestParam("presentacion")@Nullable String presentacion
 			, @RequestParam("precio")@Nullable float precio
-			, @RequestParam("id_categoria")@Nullable Integer id_categoria
-			, @RequestParam("id_autor")@Nullable Integer id_autor
+			, @RequestParam("idCategoria")@Nullable Integer id_categoria
+			, @RequestParam("idAutor")@Nullable Integer id_autor
 			, ModelMap modelMap
 			) {
 		
@@ -104,14 +105,14 @@ public class LibroController {
 		}
 		
 		
-		return "redirect:/libros/listar-libros";
+		return "redirect:/libros/findAll";
 	}
 	
 	
 	@GetMapping("/del")
 	private String del(@RequestParam("idLibro")@Nullable Integer idLibro ) {
 		libroDAO.dell(idLibro);
-		return "redirect:/libros/listar-libros";
+		return "redirect:/libros/findAll";
 	}
 	
 	

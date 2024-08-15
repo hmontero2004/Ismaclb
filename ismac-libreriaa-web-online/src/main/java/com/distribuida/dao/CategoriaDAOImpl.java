@@ -22,7 +22,7 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 	@Transactional
 	public List<Categoria> finALL() {
 		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("SELECT au FROM Categoria cat", Categoria.class).getResultList();
+		return session.createQuery("SELECT cat FROM Categoria cat", Categoria.class).getResultList();
 	}
 
 	@Override
