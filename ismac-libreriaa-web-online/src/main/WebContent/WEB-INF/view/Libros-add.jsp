@@ -64,7 +64,7 @@
 	Autor
 	<select id="idAutor" name="idAutor">
 	 <c:forEach var="item" items="${autores}">
-	         <option value="${item.idAutor}" ${item.idAutor == libro.autor.idAutor ? 'selected' : ''>${item.nombre} ${item.apellido}</option>
+	         <option value="${item.idAutor}" ${item.idAutor == libro.autor.idAutor ? 'selected' : ''}>${item.nombre} ${item.apellido}</option>
 	    </c:forEach>
 
 	</select>
