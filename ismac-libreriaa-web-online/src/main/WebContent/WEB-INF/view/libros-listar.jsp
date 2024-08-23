@@ -5,33 +5,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Libros</title>
+ <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css" />
+ <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap-table.min.css" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-	<h1>Libros</h1>
-	<button onclick="window.location.href='/ismac-libreriaa-web-online/libros/findOne?opcion=1'; return false;">
-		Agregar
-    </button>
-	<table>
+
+<nav></nav>
+
+<section class="px-5 py-5">
+
+	<div class="container" style="text-align: center;">
+		<h1>Libros</h1>
+    <button class="btn btn-primary" 
+    onclick="window.location.href='/ismac-libreriaa-web-online/libros/findOne?opcion=1'; return false;">
+	<i class="fa-regular fa-address-book"></i>
+	
+	<!--Agregar -->	 </button>
+  </div>
+  <div class="table-responsive">
+  <table id="tabla1"
+    name="tabla1"
+				data-height="600"
+				data-search="true"
+				data-pagination="true"
+				data-toogle="tabla1"
+				data-tollbar=".toolbar"
+				class="table table-striped table-sm"
+     
+       >
 		<thead>
 			<tr>
+			
 				<th>idLibros</th>
-				<th>titulo</th>
-				<th>editorial</th>
-				<th>numPaginas</th>
-				<th>edicion</th>
-				<th>idioma</th>
-				<th>fechaPublicacion</th>
-				<th>descripcion</th>
-				<th>tipoPasta</th>
-				<th>ISBN</th>
-				<th>numEjemplares</th>
-				<th>portada</th>
-				<th>presentacion</th>
-				<th>precio</th>
-				<th>categoria</th>
-				<th>autor</th>
+				<th data-field="Título" data-sortable="true" >titulo</th>
+				<th data-field="Editorial" data-sortable="true" >editorial</th>
+				<th data-field="N° Páginas" data-sortable="true" >numPaginas</th>
+				<th data-field="Edicion" data-sortable="true" >edicion</th>
+				<th data-field="Idioma" data-sortable="true" >idioma</th>
+				<th data-field="Fecha de publicacion" data-sortable="true" >fechaPublicacion</th>
+				<th data-field="Descripción" data-sortable="true" >descripcion</th>
+				<th data-field="Tipo de pasta" data-sortable="true" >tipoPasta</th>
+				<th data-field="ISBN" data-sortable="true" >ISBN</th>
+				<th data-field="N° Ejemplares" data-sortable="true" >numEjemplares</th>
+				<th data-field="Portada" data-sortable="true" >portada</th>
+				<th data-field="Presentación" data-sortable="true" >presentacion</th>
+				<th data-field="Precio" data-sortable="true" >precio</th>
+				<th data-field="Categoria" data-sortable="true" >categoria</th>
+				<th data-field="Autor" data-sortable="true" >autor</th>
 				<th>Acciones</th>
 				
 			</tr>
@@ -59,19 +82,43 @@
 					<td>${item.autor.nombre}${item.autor.apellido}</td>
 		
 					<td>
-					 		<button onclick="window.location.href='/ismac-libreriaa-web-online/libros/findOne?idLibro=${item.idLibro}&opcion=1'; return false;">
-					 		Actualizar
+					 		<button class="btn btn-success"  onclick="window.location.href='/ismac-libreriaa-web-online/libros/findOne?idLibro=${item.idLibro}&opcion=1'; return false;">
+					 		<i class="fa-solid fa-pen"></i>
+					 		<!--Actualizar-->
 					 	</button>
-					 	<button onclick="window.location.href='/ismac-libreriaa-web-online/libros/findOne?idLibro=${item.idLibro}&opcion=2'; return false;">
-					 		Eliminar
+					 	<button class="btn btn-danger" onclick="window.location.href='/ismac-libreriaa-web-online/libros/findOne?idLibro=${item.idLibro}&opcion=2'; return false;">
+					 	<i class="fa-solid fa-trash"></i>
+					 	
+					 	<!-- Eliminar -->	
 					 	</button>
 					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+  </div>
 
+</section>
 
+<footer></footer>
+
+		
+	
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/bootstrap-table-es-MX.min.js"></script>
+<script type="text/javascript">
+    
+     var $tabla1 = $('#tabla1')
+     
+     $(function(){
+            $tabla1.bootstrapTable({ sortReset: true })
+    	 
+     })
+     
+  
+</script>
 
 </body>
 </html>
